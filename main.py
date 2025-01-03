@@ -19,14 +19,24 @@ def letters_ranking(text):
             ranks.update({char: rank_letter + 1})
     return ranks
 
+def sort_on(list):
+    return list[0]
+
+def print_report_dict(ranks):
+    letters = []
+    letters = list(ranks.items())
+    letters.sort(reverse=False, key=sort_on)
+    for letter in letters:
+        if letter[0].isalpha():
+            print(f"The {letter[0]} character was found {letter[1]} times")
+
 def main():
     file_contents = elab_file("books/frankestein.txt")
     words = word_count(file_contents)
-    print(f"number of words in Frankenstein: {words}")
+    print(f"--- Begin report of books/frankenstein.txt ---")
+    print(f"{words} words found in the document")
     
-    print(f"----------------------------------------------------")
-    print(f"Letter rank in Frankenstein")
     ranks = {}
     ranks = letters_ranking(file_contents)
-    print(f"{ranks}")
+    print_report_dict(ranks)
 main()
