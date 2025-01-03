@@ -8,9 +8,10 @@ def word_count(text):
     return len(words)
 
 def letters_ranking(text):
+    lowered = text.lower()
     ranks = {}
-    for i in range(0, len(text)):
-        char = text[i]
+    for i in range(0, len(lowered)):
+        char = lowered[i]
         rank_letter = ranks.get(char)
         if rank_letter == None:
             ranks[char] = 1
@@ -23,9 +24,9 @@ def main():
     words = word_count(file_contents)
     print(f"number of words in Frankenstein: {words}")
     
-    print("----------------------------------------------------")
-    print("Letter rank in Frankenstein")
+    print(f"----------------------------------------------------")
+    print(f"Letter rank in Frankenstein")
     ranks = {}
     ranks = letters_ranking(file_contents)
-    print(ranks)
+    print(f"{ranks}")
 main()
