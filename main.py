@@ -1,15 +1,16 @@
 from stats import get_num_words
 from stats import get_num_letters
 from stats import sort_letters_by_count
+import sys 
 
 def get_book_text(path_to_file):
     with open(path_to_file) as f:
         # f is a file object
-        return f.read()
+        return f.read() 
 
 def print_report(file_name, words, ord_letters):
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {file_name}")
     
     print("----------- Word Count ----------")    
     print(f"Found {words} total words")
@@ -20,7 +21,12 @@ def print_report(file_name, words, ord_letters):
             print(f"{item[0]}: {item[1]}")
 
 def main():
-    file_name = 'books/frankenstein.txt'
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    
+
+    file_name = sys.argv[1]
     file_contents = get_book_text(file_name)
     # #1 objective: print(file_contents)
     
