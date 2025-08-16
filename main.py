@@ -16,8 +16,8 @@ def print_report(file_name, words, ord_letters):
 
     print("--------- Character Count -------")
     for item in ord_letters:
-        if (item[key]).isalpha():
-            print(f"{item[key]}: {item[value]}")
+        if item[0].isalpha():
+            print(f"{item[0]}: {item[1]}")
 
 def main():
     file_name = 'books/frankenstein.txt'
